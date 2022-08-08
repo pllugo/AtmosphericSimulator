@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+	<header>
+		<div class="topnav">
+			<a class="active" th:href="@{/}">Home</a> <a th:href="@{/inicio}">New</a> <a
+				href="#contact">Contact</a> <a href="#about">About</a>
+		</div>
+	</header>
+	<div class="container">
+		<header>AP Form (Acidification Potential)</header>
+		<form th:action="@{/acidification/registro}" method="POST"
+			enctype="multipart/form-data">
+			<div class="form-first">
+				<div class="details-compound">
+					<span class="title">Details Compound</span>
+					<div class="fields">
+						<div class="input-field">
+							<label for="">Compound</label> <input type="text"
+								name="nombreCompuesto" id="" th:value="${nombreCompuesto}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Formula</label> <input type="text"
+								name="formulaCompuesto" id="" th:value="${formulaCompuesto}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Molar Mass (g/mL)</label> <input type="text"
+								name="pesoMolecular" id="" th:value="${pesoMolecular}">
+						</div>
+
+					</div>
+
+				</div>
+				<div class="details-compound">
+					<span class="title">Quantity of halogenated</span>
+					<div class="fields">
+
+
+						<div class="input-field">
+							<label for="">Fluor</label> <input type="number" name="fluor"
+								id="" th:value="${fluor}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Chlorine</label> <input type="number" name="cloro"
+								id="" th:value="${cloro}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Nitrogen</label> <input type="number"
+								name="nitrogeno" id="" th:value="${nitrogeno}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Sulfur</label> <input type="number" name="azufre"
+								id="" th:value="${azufre}">
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<br>
+
+			<button type="submit" class="btn btn-success">Calculate</button>
+
+
+		</form>
+	</div>
+	<div th:if="${exito}!=null" class="card text-white bg-success mb-3">
+		<div class="card-body">
+			<h5 class="card-title">Exito</h5>
+			<p class="card-text" th:text="${exito}"></p>
+		</div>
+	</div>
+	<div th:if="${error}!=null" class="card text-white bg-danger mb-3">
+		<div class="card-body">
+			<h5 class="card-title">Error</h5>
+			<p class="card-text" th:text="${error}"></p>
+		</div>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+		integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

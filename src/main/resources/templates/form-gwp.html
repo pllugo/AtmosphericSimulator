@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="/css/estilo-pocp.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" th:href="@{/inicio}">Home</a>
+            <a href="#new">New</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
+    </header>
+    <div class="container">
+        <header>GWP Form (Global Warming Potential)</header>
+        <form th:action="@{/calentamiento/registro}"  method="POST"
+		enctype="multipart/form-data">
+            <div class="form-first">
+                <div class="details-compound">
+                    <span class="title">Details Compound</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="">Compound</label>
+                            <input type="text" name="nombreCompuesto" th:value="${nombreCompuesto}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Formula</label>
+                            <input type="text" name="formulaCompuesto" th:value="${formulaCompuesto}">
+                        </div>
+                        
+                        <div class="input-field">
+                            <label for="">Molar Mass (g/mL)</label>
+                            <input type="text" name="pesoMolecular" th:value="${pesoMolecular}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Concentration (cm3.molecule.s-1)</label>
+                            <input type="text" name="concentracion" th:value="${concentracion}">
+                        </div>
+                        <div class="input-field">
+                            <label for="">optical step (cm)</label>
+                            <input type="text" name="pasoOptico" th:value="${pasoOptico}">
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Atmospheric Global lifetimes</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="">Rate constant with OH radical</label>
+                            <input type="text" name="constanteOh" th:value="${constanteOh}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Rate constant with Cl radical</label>
+                            <input type="text" name="constanteCl" th:value="${constanteCl}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Rate constant with O3 radical</label>
+                            <input type="text" name="constanteO3" th:value="${constanteO3}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Rate constant with NO3 radical</label>
+                            <input type="text" name="constanteNo3" th:value="${constanteNo3}">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="file">Select a CSV file</label> <input type="file"
+                                name="file" class="form-control-file" id="file" accept=".csv">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <br>
+
+            <button type="submit" class="btn btn-success">Calculate</button>
+           
+
+        </form>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

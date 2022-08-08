@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.container {
+    margin-top: auto;
+    padding: 100px;
+}
+
+.row {
+    background-color: thistle;
+    padding: 10px;
+    margin: auto;
+    height: 400px;
+}
+
+.row div {
+    background-color: white;
+    margin: 10px;
+    
+}
+
+.col-2 {
+    background: url(/img/smog.webp);
+    
+}
+
+
+

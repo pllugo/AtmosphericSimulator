@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="text-center mt-5">
+        <form th:action="@{/registro}" method="POST" style="max-width: 480px; margin:auto">
+            <img class="mt-4" src="/img/logounc.png" alt="logo">
+            <h1>Please Log in</h1>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Last name and name</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="nombre" th:value="${nombre}">
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" th:value="${email}">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password" th:value="${password}">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Repeat Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password2" th:value="${password2}">
+              </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Register!</button>
+            </div>
+            
+          </form>
+    </div>
+    
+     <div th:if="${exito}!=null" class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Exito</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+            <div th:if="${error}!=null" class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Error</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

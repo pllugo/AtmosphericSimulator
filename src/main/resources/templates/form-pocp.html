@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="/css/estilo-pocp.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" th:href="@{/inicio}">Home</a>
+            <a href="#new">New</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
+    </header>
+    <div class="container">
+        <header>POCP Form (Photochemical Ozone Creation Potential)</header>
+        <form th:action="@{/pocp/registro}" method="POST" enctype="multipart/form-data">
+            <div class="form-first">
+                <div class="details-compound">
+                    <span class="title">Details Compound</span>
+                    <div class="fields">
+                        <div class="input-field">
+							<label for="">Compound</label> 
+							<input type="text" name="nombreCompuesto" th:value="${nombreCompuesto}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Formula</label> 
+							<input type="text" name="formulaCompuesto" th:value="${formulaCompuesto}">
+						</div>
+
+						<div class="input-field">
+							<label for="">Molar Mass (g/mL)</label> 
+							<input type="text" name="pesoMolecular" th:value="${pesoMolecular}">
+						</div>
+
+                        <div class="input-field">
+                            <label for="">Number of oxidizable bonds</label>
+                            <input type="number" name="numeroEnlaces" th:value="${numeroEnlaces}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Carbon number of the VOC</label>
+                            <input type="number" name="numeroCarbonos" th:value="${numeroCarbonos}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Rate constant with OH radical</label>
+                            <input type="text" name="constantekoh" th:value="${constantekoh}">
+                        </div>
+                        
+                        <div class="input-field">
+                            <label for="">Rate constant with O3 molecules</label>
+                            <input type="text" name="constanteko3" th:value="${constanteko3}">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Product dates</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="">Molar yield for the unreactive product</label>
+                            <input type="text" name="rendimientoProductoNoReactivo" th:value="${rendimientoProductoNoReactivo}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">OH rate coefficient for the unreactive product</label>
+                            <input type="text" name="constantekOhProductoNoReactivo" th:value="${constantekOhProductoNoReactivo}">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="">Number of reactive bonds of the products</label>
+                            <input type="number" name="numeroEnlacesProducto" th:value="${numeroEnlacesProducto}">
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Data for the calculation of the parameter F</span>
+                    <select class="form-select" aria-label="Default select example" th:name="clase_voc" th:value="${clase_voc}">
+                       
+                        <option value="aliphatics">aliphatics</option>
+                        <option value="aromatics with 0 alkyl substituents">aromatics with 0 alkyl substituents</option>
+                        <option value="aromatics with 1 alkyl substituents">aromatics with 1 alkyl substituents</option>
+                        <option value="aromatics with 2 alkyl substituents">aromatics with 2 alkyl substituents</option>
+                        <option value="aromatics with 3 alkyl substituents">aromatics with 3 alkyl substituents</option>
+                      </select>  
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Data for the calculation of the parameter P</span>
+                    <select class="form-select" aria-label="Default select example" th:name="claseCov_p" th:value="${claseCov_p}">
+                        
+                        <option value="aldehydes/ketones">aldehydes/ketones</option>
+                        <option value="alpha-dicarbonyls">alpha-dicarbonyls</option>
+                        <option value="cycloketones">cycloketones</option>
+                        <option value="N/A">N/A</option>
+                      </select>   
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Data for the calculation of the parameter RO3</span>
+                    <select class="form-select" aria-label="Default select example" th:name="covsConOzono" th:value="${covsConOzono}">
+                       
+                        <option value="alkenes/unsaturated oxygenates">alkenes/unsaturated oxygenates</option>
+                        <option value="N/A">N/A</option>
+                      </select>
+                      <div class="input-field">
+                            <label for="">Molar yield for VOC with OH radical</label>
+                            <input type="text" name="rendimientoCompuestoConOh" th:value="${rendimientoCompuestoConOh}">
+                        </div>   
+                </div>
+
+                <div class="details-compound">
+                    <span class="title">Data for the calculation of the parameter Q</span>
+                    <select class="form-select" aria-label="Default select example" th:name="covAromatico" th:value="${covAromatico}">
+                    	
+						<option value="benzaldehydes/styrenes">benzaldehydes/styrenes</option>
+						<option value="hydroxyarenes">hydroxyarenes</option>
+						<option value="N/A">N/A</option>
+					</select> 
+                </div> 
+                <div class="details-compound">
+                    <span class="title">Region</span>
+                    <select class="form-select" aria-label="Default select example" th:name="region" th:value="${region}">
+                		
+                		<option value="europa">Europe</option>
+                		<option value="usa">USA</option>
+            		</select> 
+                </div> 
+
+            </div>
+            <br>
+
+            <button type="submit" class="btn btn-success">Calculate</button>
+           
+
+        </form>
+    </div>
+   <div th:if="${exito}!=null" class="card text-white bg-success mb-3">
+		<div class="card-body">
+			<h5 class="card-title">Exito</h5>
+			<p class="card-text" th:text="${exito}"></p>
+		</div>
+	</div>
+	<div th:if="${error}!=null" class="card text-white bg-danger mb-3">
+		<div class="card-body">
+			<h5 class="card-title">Error</h5>
+			<p class="card-text" th:text="${error}"></p>
+		</div>
+	</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
